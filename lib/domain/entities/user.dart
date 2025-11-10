@@ -23,4 +23,29 @@ class User {
     this.notifications,
     this.vibration,
   });
+  User copyWith({
+    String? username,
+    String? avatarPath,
+    int? coins,
+    String? currentEgg,
+    int? currentLevel,
+    int? points,
+    List<String>? purshasedEggs,
+    bool? sound,
+    bool? notifications,
+    bool? vibration,
+  }) {
+    return User(
+      username: username ?? this.username,
+      avatarPath: avatarPath ?? this.avatarPath,
+      coins: coins ?? this.coins,
+      currentEgg: currentEgg ?? this.currentEgg,
+      currentLevel: currentLevel ?? this.currentLevel,
+      points: points ?? this.points,
+      purshasedEggs: purshasedEggs ?? this.purshasedEggs,
+      sound: sound ?? this.sound,
+      notifications: notifications ?? this.notifications,
+      vibration: vibration ?? this.vibration,
+    );
+  }
 }
