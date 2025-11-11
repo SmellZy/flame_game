@@ -1,6 +1,3 @@
-import 'package:flame_game/domain/entities/user.dart';
-import 'package:flame_game/domain/repositories/user_repository.dart';
-import 'package:flame_game/domain/usecases/user/update_user_photo.dart';
 import 'package:flame_game/presentation/widgets/main_background_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
