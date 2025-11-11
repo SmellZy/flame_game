@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 
-abstract class LocalDataSource {
+abstract class UserLocalDataSource {
   Future<UserModel?> getUser();
   Future<void> saveUser(UserModel user);
 }
 
-class LocalDataSourceImpl implements LocalDataSource {
+class UserLocalDataSourceImpl implements UserLocalDataSource {
   static const _userKey = 'user_data';
 
   @override

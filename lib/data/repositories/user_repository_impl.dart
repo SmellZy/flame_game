@@ -1,10 +1,10 @@
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../models/user_model.dart';
-import '../sources/local_datasource.dart';
+import '../sources/user_local_datasource.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  final LocalDataSource localDataSource;
+  final UserLocalDataSource localDataSource;
 
   UserRepositoryImpl({required this.localDataSource});
 

@@ -1,0 +1,83 @@
+[
+  {
+    "level": 1,
+    "minRequiredUserLevel": 0,
+    "targetScore": 110,
+    "timeLimit": 80,
+    "eggLifetime": 3.00,
+    "eggCostPoint": 5,
+    "maxEggSpawnLimit": 40
+  },
+  {
+    "level": 2,
+    "minRequiredUserLevel": 1,
+    "targetScore": 123,
+    "timeLimit": 75,
+    "eggLifetime": 2.77,
+    "eggCostPoint": 5,
+    "maxEggSpawnLimit": 38
+  },
+  {
+    "level": 3,
+    "minRequiredUserLevel": 2,
+    "targetScore": 137,
+    "timeLimit": 70,
+    "eggLifetime": 2.55,
+    "eggCostPoint": 6,
+    "maxEggSpawnLimit": 36
+  },
+  {
+    "level": 4,
+    "minRequiredUserLevel": 3,
+    "targetScore": 153,
+    "timeLimit": 65,
+    "eggLifetime": 2.33,
+    "eggCostPoint": 6,
+    "maxEggSpawnLimit": 34
+  },
+  {
+    "level": 5,
+    "minRequiredUserLevel": 4,
+    "targetScore": 171,
+    "timeLimit": 60,
+    "eggLifetime": 2.10,
+    "eggCostPoint": 7,
+    "maxEggSpawnLimit": 32
+  },
+  {
+    "level": 6,
+    "minRequiredUserLevel": 5,
+    "targetScore": 191,
+    "timeLimit": 55,
+    "eggLifetime": 1.88,
+    "eggCostPoint": 7,
+    "maxEggSpawnLimit": 30
+  },
+  {
+    "level": 7,
+    "minRequiredUserLevel": 6,
+    "targetScore": 213,
+    "timeLimit": 50,
+    "eggLifetime": 1.65,
+    "eggCostPoint": 8,
+    "maxEggSpawnLimit": 28
+  },
+  {
+    "level": 8,
+    "minRequiredUserLevel": 7,
+    "targetScore": 238,
+    "timeLimit": 45,
+    "eggLifetime": 1.43,
+    "eggCostPoint": 10,
+    "maxEggSpawnLimit": 26
+  },
+  {
+    "level": 9,
+    "minRequiredUserLevel": 8,
+    "targetScore": 266,
+    "timeLimit": 40,
+    "eggLifetime": 1.20,
+    "eggCostPoint": 12,
+    "maxEggSpawnLimit": 24
+  }
+]
