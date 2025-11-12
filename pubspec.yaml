@@ -26,6 +26,8 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/levels/levels.json
+    - assets/images/avatars/
+    - assets/images/eggs/
 
   fonts:
     - family: RubikMonoOne

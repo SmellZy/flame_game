@@ -5,6 +5,7 @@ import '../models/user_model.dart';
 abstract class UserLocalDataSource {
   Future<UserModel?> getUser();
   Future<void> saveUser(UserModel user);
+  Future<void> createUser(UserModel user);
 }
 
 class UserLocalDataSourceImpl implements UserLocalDataSource {
@@ -22,5 +23,14 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   Future<void> saveUser(UserModel user) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_userKey, jsonEncode(user.toJson()));
+  }
+
+  @override
+  Future<void> createUser(UserModel user) async {
+    final prefs = await SharedPreferences.getInstance();
+    final existingUser = prefs.getString(_userKey);
+    if (existingUser == null) {
+      await prefs.setString(_userKey, jsonEncode(user.toJson())); 
+    }
   }
 }

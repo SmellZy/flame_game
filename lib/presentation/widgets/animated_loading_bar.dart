@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimatedProgressBar extends StatefulWidget {
-  const AnimatedProgressBar({super.key});
+  final VoidCallback onComplete;
+
+  const AnimatedProgressBar({super.key, required this.onComplete});
 
   @override
   State<AnimatedProgressBar> createState() => _AnimatedProgressBarState();
@@ -31,8 +33,12 @@ class _AnimatedProgressBarState extends State<AnimatedProgressBar>
             setState(() {
               progress = _animation.value;
             });
+          })
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              widget.onComplete();
+            }
           });
-          
 
     _controller.forward();
   }

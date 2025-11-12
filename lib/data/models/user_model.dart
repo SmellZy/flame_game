@@ -11,9 +11,10 @@ class UserModel extends User {
     super.purshasedEggs,
     super.sound,
     super.notifications,
-    super.vibration
+    super.vibration,
   });
 
+  @override
   UserModel copyWith({
     String? username,
     String? avatarPath,
@@ -24,7 +25,7 @@ class UserModel extends User {
     List<String>? purshasedEggs,
     bool? sound,
     bool? notifications,
-    bool? vibration
+    bool? vibration,
   }) {
     return UserModel(
       username: username ?? this.username,
@@ -36,7 +37,7 @@ class UserModel extends User {
       purshasedEggs: purshasedEggs ?? this.purshasedEggs,
       sound: sound ?? this.sound,
       notifications: notifications ?? this.notifications,
-      vibration: vibration ?? this.vibration
+      vibration: vibration ?? this.vibration,
     );
   }
 
@@ -50,19 +51,23 @@ class UserModel extends User {
     'purshasedEggs': purshasedEggs,
     'sound': sound,
     'notifications': notifications,
-    'vibration': vibration
+    'vibration': vibration,
   };
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    username: json['username'],
-    avatarPath: json['avatarPath'],
-    coins: json['coins'],
-    currentEgg: json['currentEgg'],
-    currentLevel: json['currentLevel'],
-    points: json['points'],
-    purshasedEggs: json['purshasedEggs'],
-    sound: json['sound'],
-    notifications: json['notifications'],
-    vibration: json['vibration'] 
-  );
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    final purshasedEggsJson = json['purshasedEggs'] as List<dynamic>?;
+
+    return UserModel(
+      username: json['username'],
+      avatarPath: json['avatarPath'],
+      coins: json['coins'],
+      currentEgg: json['currentEgg'],
+      currentLevel: json['currentLevel'],
+      points: json['points'],
+      purshasedEggs: purshasedEggsJson?.map((e) => e.toString()).toList(),
+      sound: json['sound'],
+      notifications: json['notifications'],
+      vibration: json['vibration'],
+    );
+  }
 }

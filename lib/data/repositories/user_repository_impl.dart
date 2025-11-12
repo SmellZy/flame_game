@@ -28,4 +28,20 @@ class UserRepositoryImpl implements UserRepository {
       vibration: user.vibration
     ));
   }
+
+  @override
+  Future<void> createUser(User user) async {
+    await localDataSource.createUser(UserModel(
+      username: user.username ?? "Player",
+      avatarPath: user.avatarPath ?? "assets/images/avatars/avatar1.png",
+      coins: user.coins ?? 0,
+      currentEgg: user.currentEgg ?? "assets/images/eggs/egg1.png",
+      currentLevel: user.currentLevel ?? 0,
+      points: user.points ?? 0,
+      purshasedEggs: user.purshasedEggs ?? ["egg1.png"],
+      sound: user.sound ?? true,
+      notifications: user.notifications ?? true,
+      vibration: user.vibration ?? true
+    ));
+  }
 }

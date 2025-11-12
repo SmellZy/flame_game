@@ -1,12 +1,23 @@
+import 'package:flame_game/data/repositories/level_repository_impl.dart';
+import 'package:flame_game/data/repositories/user_repository_impl.dart';
+import 'package:flame_game/data/sources/level_local_datasource.dart';
+import 'package:flame_game/data/sources/user_local_datasource.dart';
+import 'package:flame_game/domain/repositories/level_repository.dart';
+import 'package:flame_game/domain/repositories/user_repository.dart';
+import 'package:flame_game/presentation/bloc/level/level_bloc.dart';
+import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(ScreenUtilInit(
-    designSize: Size(1080, 1920),
-    minTextAdapt: true,
-    builder: (context, child) => const MyApp()),
+  runApp(
+    ScreenUtilInit(
+      designSize: Size(1080, 1920),
+      minTextAdapt: true,
+      builder: (context, child) => const MyApp(),
+    ),
   );
 }
 
@@ -15,9 +26,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const LoadingScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<UserBloc>(
+          create: (context) {
+            final UserLocalDataSource localDataSource =
+                UserLocalDataSourceImpl();
+            final UserRepository userRepository = UserRepositoryImpl(
+              localDataSource: localDataSource,
+            );
+            return UserBloc(userRepository);
+          },
+        ),
+        BlocProvider<LevelBloc>(
+          create: (context) {
+            final LevelLocalDataSource levelLocalDataSource =
+                LevelLocalDataSourceImpl();
+            final LevelRepository levelRepository = LevelRepositoryImpl(
+              localDataSource: levelLocalDataSource,
+            );
+            return LevelBloc(levelRepository);
+          },
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const LoadingScreen(),
+      ),
     );
   }
 }

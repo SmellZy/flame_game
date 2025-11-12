@@ -1,3 +1,6 @@
+import 'package:flame_game/presentation/screens/how_to_play_screen.dart';
+import 'package:flame_game/presentation/screens/menu_screen.dart';
+import 'package:flame_game/presentation/screens/play_screen.dart';
 import 'package:flame_game/presentation/widgets/main_background_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,30 +12,45 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _glowAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    )..repeat(reverse: true);
-
-    _glowAnimation = Tween<double>(
-      begin: 0.7,
-      end: 1.0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+class _HomeScreenState extends State<HomeScreen> {
+  void howToPlay() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            HowToPlayScreen(),
+        transitionDuration: Duration.zero,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return child;
+        },
+      ),
+    );
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void menu() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => MenuScreen(),
+        transitionDuration: Duration.zero,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return child;
+        },
+      ),
+    );
+  }
+
+  void play() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => PlayScreen(),
+        transitionDuration: Duration.zero,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return child;
+        },
+      ),
+    );
   }
 
   @override
@@ -40,22 +58,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       body: Stack(
         children: [
-          AnimatedBuilder(
-            animation: _glowAnimation,
-            builder: (context, child) {
-              return MainBackgroundComponent(
-                colorFilter: ColorFilter.mode(
-                  Color.fromRGBO(
-                    255,
-                    165,
-                    0,
-                    (0.1 * _glowAnimation.value).clamp(0.0, 1.0),
-                  ),
-                  BlendMode.lighten,
-                ),
-              );
-            },
-          ),
+          MainBackgroundComponent(),
           SafeArea(
             child: Padding(
               padding: EdgeInsets.all(40.w),
@@ -68,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen>
                     children: [
                       //info button
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          howToPlay();
+                        },
                         icon: Image.asset(
                           "assets/images/info.png",
                           width: 205.w,
@@ -78,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen>
                       //menu button
                       IconButton(
                         onPressed: () {
-                          debugPrint("press");
+                          menu();
                         },
                         icon: Image.asset(
                           "assets/images/menu.png",
@@ -97,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen>
                         height: 1400.h,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          play();
+                        },
                         icon: Image.asset(
                           "assets/images/button.png",
                           width: 668.w,
