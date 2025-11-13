@@ -27,6 +27,7 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/levels/levels.json
+    - assets/eggs/eggs.json
     - assets/images/avatars/
     - assets/images/eggs/
 

@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "eggIcon": "eggs/egg1.png",
+        "buyPrice": 300
+    },
+    {
+        "id": 2,
+        "eggIcon": "eggs/egg2.png",
+        "buyPrice": 500
+    },
+    {
+        "id": 3,
+        "eggIcon": "eggs/egg3.png",
+        "buyPrice": 800
+    },
+    {
+        "id": 4,
+        "eggIcon": "eggs/egg4.png",
+        "buyPrice": 1000
+    },
+    {
+        "id": 5,
+        "eggIcon": "eggs/egg5.png",
+        "buyPrice": 1500
+    },
+    {
+        "id": 6,
+        "eggIcon": "eggs/egg6.png",
+        "buyPrice": 2000
+    },
+    {
+        "id": 7,
+        "eggIcon": "eggs/egg7.png",
+        "buyPrice": 2400
+    },
+    {
+        "id": 8,
+        "eggIcon": "eggs/egg8.png",
+        "buyPrice": 2900
+    },
+    {
+        "id": 9,
+        "eggIcon": "eggs/egg9.png",
+        "buyPrice": 3500
+    },
+    {
+        "id": 10,
+        "eggIcon": "eggs/egg10.png",
+        "buyPrice": 4000
+    },
+    {
+        "id": 11,
+        "eggIcon": "eggs/egg11.png",
+        "buyPrice": 4500
+    },
+    {
+        "id": 12,
+        "eggIcon": "eggs/egg12.png",
+        "buyPrice": 5200
+    }
+]
