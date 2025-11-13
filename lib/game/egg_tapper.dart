@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
+import 'package:flutter/services.dart';
 import 'package:flame_game/domain/entities/level.dart';
 import 'package:flame_game/domain/entities/user.dart';
 import 'package:flame_game/game/components/background.dart';
@@ -11,7 +13,7 @@ import 'package:flame_game/game/components/score_display_component.dart';
 import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/text.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // Додано для TextPaint
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // the logic was: eggs spawn on playground, user tap on it and earn points.
 // If user hit the minimum required points to pass the level, user move to next level
@@ -32,6 +34,7 @@ class HitTheEggGame extends FlameGame with TapCallbacks {
   late ScoreDisplayComponent scoreDisplay;
   late Background background;
 
+
   EggComponent? currentEgg;
   final Random random = Random();
 
@@ -48,6 +51,11 @@ class HitTheEggGame extends FlameGame with TapCallbacks {
     await super.onLoad();
     background = Background(size);
     add(background);
+
+    // Попереднє завантаження аудіофайлу
+    if (user.sound ?? true) {
+      await FlameAudio.audioCache.load('toggle_on.wav');
+    }
 
     gameTimer = Timer(
       levelConfig.timeLimit.toDouble(),
@@ -145,10 +153,30 @@ class HitTheEggGame extends FlameGame with TapCallbacks {
   void onEggHit(int eggId) {
     // чи юзер клікнув на поточне активне яйце
     if (currentEgg != null && currentEgg!.id == eggId) {
+      // 1. Обробка звуку та вібрації
+      _playHitEffects();
+
+      // 2. Оновлення очок
       currentScore += levelConfig.eggCostPoint;
       scoreDisplay.updateScore(currentScore);
 
+      // 3. Спавн нового яйця
       spawnNewEgg();
+    }
+  }
+
+  // Нова функція для відтворення звукових та вібраційних ефектів
+  void _playHitEffects() {
+    // Відтворення звуку
+    if (user.sound?? true) {
+      // Запускаємо звук (він має бути попередньо завантажений)
+      FlameAudio.play('toggle_on.wav', volume: 0.5);
+    }
+
+    // Відтворення вібрації
+    if (user.vibration ?? true) {
+      // Викликаємо легкий тактильний відгук
+      HapticFeedback.lightImpact();
     }
   }
 
