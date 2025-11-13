@@ -10,6 +10,8 @@ import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/screens/home_screen.dart';
 import 'package:flame_game/presentation/screens/how_to_play_screen.dart';
 import 'package:flame_game/presentation/screens/loading_screen.dart';
+import 'package:flame_game/presentation/screens/menu/profile_screen.dart';
+import 'package:flame_game/presentation/screens/menu/settings_screen.dart';
 import 'package:flame_game/presentation/screens/menu_screen.dart';
 import 'package:flame_game/presentation/screens/play_screen.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +66,8 @@ class MyApp extends StatelessWidget {
           '/play': (context) => const PlayScreen(),
           '/howtoplay': (context) => const HowToPlayScreen(),
           '/menu': (context) => const MenuScreen(),
+          '/profile': (context) => const ProfileScreen(),
+          '/settings': (context) => const SettingsScreen(),
         },
         debugShowCheckedModeBanner: false,
       ),

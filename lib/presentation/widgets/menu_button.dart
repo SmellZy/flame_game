@@ -8,16 +8,14 @@ class MenuButton extends StatelessWidget {
     required this.imagePath
   });
 
-  final void onPressed;
+  final VoidCallback onPressed;
   final String imagePath;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.all(0),
-    onPressed: () {
-      onPressed;
-    },
+    onPressed: onPressed,
     icon: Image.asset(
       imagePath,
       width: 350.w,

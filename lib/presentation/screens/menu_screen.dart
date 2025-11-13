@@ -144,25 +144,27 @@ class _MenuScreenState extends State<MenuScreen> {
                             ),
                             SizedBox(height: 30.h),
                             MenuButton(
-                              onPressed: {
-                                //clearPrefs(), debugPrint("cleared")
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/profile");
                               },
                               imagePath: "assets/images/profile.png",
                             ),
                             MenuButton(
-                              onPressed: {},
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/settings");
+                              },
                               imagePath: "assets/images/settings.png",
                             ),
                             MenuButton(
-                              onPressed: {},
+                              onPressed: (){},
                               imagePath: "assets/images/leaderboard.png",
                             ),
                             MenuButton(
-                              onPressed: {},
+                              onPressed: (){},
                               imagePath: "assets/images/policy.png",
                             ),
                             MenuButton(
-                              onPressed: {},
+                              onPressed: (){},
                               imagePath: "assets/images/terms.png",
                             ),
                           ],

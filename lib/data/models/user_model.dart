@@ -3,6 +3,7 @@ import 'package:flame_game/domain/entities/user.dart';
 class UserModel extends User {
   UserModel({
     super.username,
+    super.email,
     super.avatarPath,
     super.coins,
     super.currentEgg,
@@ -17,6 +18,7 @@ class UserModel extends User {
   @override
   UserModel copyWith({
     String? username,
+    String? email,
     String? avatarPath,
     int? coins,
     String? currentEgg,
@@ -29,6 +31,7 @@ class UserModel extends User {
   }) {
     return UserModel(
       username: username ?? this.username,
+      email: email ?? this.email,
       avatarPath: avatarPath ?? this.avatarPath,
       coins: coins ?? this.coins,
       currentEgg: currentEgg ?? this.currentEgg,
@@ -43,6 +46,7 @@ class UserModel extends User {
 
   Map<String, dynamic> toJson() => {
     'username': username,
+    'email': email,
     'avatarPath': avatarPath,
     'coins': coins,
     'currentEgg': currentEgg,
@@ -59,6 +63,7 @@ class UserModel extends User {
 
     return UserModel(
       username: json['username'],
+      email: json['email'],
       avatarPath: json['avatarPath'],
       coins: json['coins'],
       currentEgg: json['currentEgg'],

@@ -17,6 +17,7 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> updateUser(User user) async {
     await localDataSource.saveUser(UserModel(
       username: user.username,
+      email: user.email,
       avatarPath: user.avatarPath,
       coins: user.coins,
       currentEgg: user.currentEgg,
@@ -33,6 +34,7 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> createUser(User user) async {
     await localDataSource.createUser(UserModel(
       username: user.username ?? "Player",
+      email: user.email ?? "",
       avatarPath: user.avatarPath ?? "assets/images/avatars/avatar1.png",
       coins: user.coins ?? 0,
       currentEgg: user.currentEgg ?? "assets/images/eggs/egg1.png",

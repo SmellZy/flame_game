@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class User {
   final String? username;
+  final String? email;
   final String? avatarPath;
   final int? coins;
   final String? currentEgg;
@@ -13,6 +14,7 @@ class User {
 
   User({
     this.username,
+    this.email,
     this.avatarPath,
     this.coins,
     this.currentEgg,
@@ -25,6 +27,7 @@ class User {
   });
   User copyWith({
     String? username,
+    String? email,
     String? avatarPath,
     int? coins,
     String? currentEgg,
@@ -37,6 +40,7 @@ class User {
   }) {
     return User(
       username: username ?? this.username,
+      email: email ?? this.email,
       avatarPath: avatarPath ?? this.avatarPath,
       coins: coins ?? this.coins,
       currentEgg: currentEgg ?? this.currentEgg,

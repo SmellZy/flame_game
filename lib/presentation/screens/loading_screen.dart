@@ -19,6 +19,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   bool isAnimationDone = false;
   final User user = User(
     username: "Player",
+    email: "",
     avatarPath: "assets/images/avatars/avatar1.png",
     coins: 1000,
     currentEgg: "eggs/egg1.png",
