@@ -130,7 +130,7 @@ class HitTheEggGame extends FlameGame with TapCallbacks {
     // стврюємо нове яйце
     eggIdCounter++;
     currentEgg = EggComponent(
-      eggIcon: "eggs/egg4.png",
+      eggIcon: user.currentEgg!,
       position: newPosition,
       size: Vector2.all(eggSize),
       lifeTime: levelConfig.eggLifetime,

@@ -1,12 +1,13 @@
 import 'package:flame_game/domain/entities/user.dart';
+import 'package:flame_game/presentation/bloc/egg/egg_bloc.dart';
 import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/widgets/main_background_component.dart';
 import 'package:flame_game/presentation/widgets/menu_button.dart';
 import 'package:flame_game/presentation/widgets/purple_container.dart';
+import 'package:flame_game/presentation/widgets/shom_modal_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -19,16 +20,17 @@ void goBack(dynamic context) {
   Navigator.pop(context);
 }
 
-class _MenuScreenState extends State<MenuScreen> {
-  void clearPrefs() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    await preferences.clear();
-  }
+String getEggFilename(String path) {
+  if (path.isEmpty) return '';
+  return path.split('/').last;
+}
 
+class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
     context.read<UserBloc>().add(GetUserEvent());
+    context.read<EggBloc>().add(GetAllEggsEvent());
   }
 
   @override
@@ -43,7 +45,6 @@ class _MenuScreenState extends State<MenuScreen> {
         User? user;
         if (state is UserLoaded) {
           user = state.user;
-          debugPrint(user.points.toString());
         }
         final int displayCoins = user?.coins ?? 0;
         return Scaffold(
@@ -71,7 +72,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             shomModalShop(context);
                           },
                           child: Stack(
-                            alignment: AlignmentGeometry.centerRight,
+                            alignment: Alignment.centerRight,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(right: 90.w),
@@ -89,8 +90,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          user?.coins.toString() ??
-                                              displayCoins.toString(),
+                                          displayCoins.toString(),
                                           style: TextStyle(
                                             overflow: TextOverflow.clip,
                                             fontFamily: "RubikMonoOne",
@@ -177,66 +177,4 @@ class _MenuScreenState extends State<MenuScreen> {
       },
     );
   }
-}
-
-Future shomModalShop(context) {
-  return showModalBottomSheet(
-    context: context,
-    builder: (context) {
-      return StatefulBuilder(
-        builder: (sheetContext, sheetSetState) {
-          return Container(
-            height: 900.h,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(133, 158, 158, 158),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Column(
-                  children: [
-                    Text("SHOP"),
-                    GridView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        childAspectRatio: 1.0,
-                        crossAxisSpacing: 42.w,
-                        mainAxisSpacing: 87.h,
-                      ),
-                      itemCount: 12,
-                      itemBuilder: (context, index) {
-                        final eggPath =
-                            "assets/images/eggs/egg${index + 1}.png";
-                    
-                        // final bool isSelected = eggPath == _selectedEgg;
-                    
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 195, 146, 218),
-                                
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                    
-                              sheetSetState(() {});
-                    
-                              Navigator.pop(context);
-                            },
-                            icon: Image.asset(eggPath, width: 80.w, height: 80.h),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      );
-    },
-  );
 }

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flame_game/domain/entities/egg.dart';
-import 'package:flame_game/domain/repositories/Egg_repository.dart';
+import 'package:flame_game/domain/repositories/egg_repository.dart';
 import 'package:flutter/material.dart';
 
 part 'egg_event.dart';

@@ -1,10 +1,14 @@
 import 'package:flame/flame.dart';
+import 'package:flame_game/data/repositories/egg_repository_impl.dart';
 import 'package:flame_game/data/repositories/level_repository_impl.dart';
 import 'package:flame_game/data/repositories/user_repository_impl.dart';
+import 'package:flame_game/data/sources/egg_local_datasource.dart';
 import 'package:flame_game/data/sources/level_local_datasource.dart';
 import 'package:flame_game/data/sources/user_local_datasource.dart';
+import 'package:flame_game/domain/repositories/egg_repository.dart';
 import 'package:flame_game/domain/repositories/level_repository.dart';
 import 'package:flame_game/domain/repositories/user_repository.dart';
+import 'package:flame_game/presentation/bloc/egg/egg_bloc.dart';
 import 'package:flame_game/presentation/bloc/level/level_bloc.dart';
 import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/screens/home_screen.dart';
@@ -58,6 +62,16 @@ class MyApp extends StatelessWidget {
               localDataSource: levelLocalDataSource,
             );
             return LevelBloc(levelRepository);
+          },
+        ),
+        BlocProvider<EggBloc>(
+          create: (context) {
+            final EggLocalDataSource eggLocalDataSource =
+                EggLocalDataSourceImpl();
+            final EggRepository eggRepository = EggRepositoryImpl(
+              localDataSource: eggLocalDataSource,
+            );
+            return EggBloc(eggRepository);
           },
         ),
       ],
