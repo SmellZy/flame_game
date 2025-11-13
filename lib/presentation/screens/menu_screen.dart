@@ -16,7 +16,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 void goBack(dynamic context) {
-  Navigator.popUntil(context, ModalRoute.withName('/home'));
+  Navigator.pop(context);
 }
 
 class _MenuScreenState extends State<MenuScreen> {
@@ -43,8 +43,7 @@ class _MenuScreenState extends State<MenuScreen> {
         User? user;
         if (state is UserLoaded) {
           user = state.user;
-          debugPrint(user.username);
-          debugPrint(user.coins.toString());
+          debugPrint(user.points.toString());
         }
         final int displayCoins = user?.coins ?? 0;
         return Scaffold(
@@ -69,15 +68,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            if (user == null) return;
-                            final int newCoins = displayCoins + 1;
-                            final User updatedUser = user.copyWith(
-                              coins: newCoins,
-                            );
-
-                            context.read<UserBloc>().add(
-                              UpdateUserEvent(user: updatedUser),
-                            );
+                            shomModalShop(context);
                           },
                           child: Stack(
                             alignment: AlignmentGeometry.centerRight,
@@ -156,15 +147,21 @@ class _MenuScreenState extends State<MenuScreen> {
                               imagePath: "assets/images/settings.png",
                             ),
                             MenuButton(
-                              onPressed: (){},
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/leaderboard");
+                              },
                               imagePath: "assets/images/leaderboard.png",
                             ),
                             MenuButton(
-                              onPressed: (){},
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/privacy");
+                              },
                               imagePath: "assets/images/policy.png",
                             ),
                             MenuButton(
-                              onPressed: (){},
+                              onPressed: () {
+                                Navigator.of(context).pushNamed("/terms");
+                              },
                               imagePath: "assets/images/terms.png",
                             ),
                           ],
@@ -180,4 +177,66 @@ class _MenuScreenState extends State<MenuScreen> {
       },
     );
   }
+}
+
+Future shomModalShop(context) {
+  return showModalBottomSheet(
+    context: context,
+    builder: (context) {
+      return StatefulBuilder(
+        builder: (sheetContext, sheetSetState) {
+          return Container(
+            height: 900.h,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(133, 158, 158, 158),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Expanded(
+                child: Column(
+                  children: [
+                    Text("SHOP"),
+                    GridView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        childAspectRatio: 1.0,
+                        crossAxisSpacing: 42.w,
+                        mainAxisSpacing: 87.h,
+                      ),
+                      itemCount: 12,
+                      itemBuilder: (context, index) {
+                        final eggPath =
+                            "assets/images/eggs/egg${index + 1}.png";
+                    
+                        // final bool isSelected = eggPath == _selectedEgg;
+                    
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 195, 146, 218),
+                                
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                    
+                              sheetSetState(() {});
+                    
+                              Navigator.pop(context);
+                            },
+                            icon: Image.asset(eggPath, width: 80.w, height: 80.h),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    },
+  );
 }

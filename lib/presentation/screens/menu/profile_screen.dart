@@ -204,8 +204,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           },
                                                           icon: Image.asset(
                                                             avatarPath,
-                                                            width: 50,
-                                                            height: 50,
+                                                            width: 50.w,
+                                                            height: 50.h,
                                                           ),
                                                         ),
                                                       );

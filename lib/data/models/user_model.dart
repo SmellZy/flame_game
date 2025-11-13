@@ -51,7 +51,7 @@ class UserModel extends User {
     'coins': coins,
     'currentEgg': currentEgg,
     'currentLevel': currentLevel,
-    'point': points,
+    'points': points,
     'purshasedEggs': purshasedEggs,
     'sound': sound,
     'notifications': notifications,

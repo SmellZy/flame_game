@@ -3,18 +3,18 @@ import 'package:flame_game/presentation/widgets/purple_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HowToPlayScreen extends StatefulWidget {
-  const HowToPlayScreen({super.key});
+class PrivacyScreen extends StatefulWidget {
+  const PrivacyScreen({super.key});
 
   @override
-  State<HowToPlayScreen> createState() => _HowToPlayScreenState();
+  State<PrivacyScreen> createState() => _PrivacyScreenState();
 }
 
 void goBack(dynamic context) {
   Navigator.pop(context);
 }
 
-class _HowToPlayScreenState extends State<HowToPlayScreen> {
+class _PrivacyScreenState extends State<PrivacyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +46,21 @@ class _HowToPlayScreenState extends State<HowToPlayScreen> {
                     padding: EdgeInsets.all(70.w),
                     child: Column(
                       children: [
-                        Text(
-                          "HOW TO PLAY",
-                          style: TextStyle(
-                            fontFamily: "RubikMonoOne",
-                            fontSize: 75.sp,
-                            color: Colors.white,
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  "PRIVACY \nPOLICY",
+                                  style: TextStyle(
+                                    fontFamily: "RubikMonoOne",
+                                    fontSize: 75.sp,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Expanded(
                           child: Center(

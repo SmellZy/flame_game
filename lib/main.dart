@@ -10,8 +10,11 @@ import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/screens/home_screen.dart';
 import 'package:flame_game/presentation/screens/how_to_play_screen.dart';
 import 'package:flame_game/presentation/screens/loading_screen.dart';
+import 'package:flame_game/presentation/screens/menu/leaderboard_screen.dart';
+import 'package:flame_game/presentation/screens/menu/privacy_policy_screen.dart';
 import 'package:flame_game/presentation/screens/menu/profile_screen.dart';
 import 'package:flame_game/presentation/screens/menu/settings_screen.dart';
+import 'package:flame_game/presentation/screens/menu/term_of_use_screen.dart';
 import 'package:flame_game/presentation/screens/menu_screen.dart';
 import 'package:flame_game/presentation/screens/play_screen.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +71,9 @@ class MyApp extends StatelessWidget {
           '/menu': (context) => const MenuScreen(),
           '/profile': (context) => const ProfileScreen(),
           '/settings': (context) => const SettingsScreen(),
+          '/leaderboard': (context) => const LeaderboardScreen(),
+          '/privacy': (context) => const PrivacyScreen(),
+          '/terms': (context) => const TermsScreen(),
         },
         debugShowCheckedModeBanner: false,
       ),

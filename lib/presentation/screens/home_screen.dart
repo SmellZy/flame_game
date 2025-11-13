@@ -69,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //info button
                       IconButton(
                         onPressed: () {
                           howToPlay();
@@ -80,7 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 205.h,
                         ),
                       ),
-                      //menu button
                       IconButton(
                         onPressed: () {
                           menu();

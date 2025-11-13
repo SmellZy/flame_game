@@ -8,7 +8,7 @@ final class UserInitial extends UserState {}
 final class UserLoading extends UserState {}
 
 final class UserLoaded extends UserState {
-    final User user;
+  final User user;
 
   UserLoaded({required this.user});
 }
@@ -34,5 +34,3 @@ final class UserError extends UserState {
 
   UserError({required this.message});
 }
-
-

@@ -3,18 +3,18 @@ import 'package:flame_game/presentation/widgets/purple_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HowToPlayScreen extends StatefulWidget {
-  const HowToPlayScreen({super.key});
+class TermsScreen extends StatefulWidget {
+  const TermsScreen({super.key});
 
   @override
-  State<HowToPlayScreen> createState() => _HowToPlayScreenState();
+  State<TermsScreen> createState() => _TermsScreenState();
 }
 
 void goBack(dynamic context) {
   Navigator.pop(context);
 }
 
-class _HowToPlayScreenState extends State<HowToPlayScreen> {
+class _TermsScreenState extends State<TermsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,7 @@ class _HowToPlayScreenState extends State<HowToPlayScreen> {
                     child: Column(
                       children: [
                         Text(
-                          "HOW TO PLAY",
+                          "TERMS OF USE",
                           style: TextStyle(
                             fontFamily: "RubikMonoOne",
                             fontSize: 75.sp,

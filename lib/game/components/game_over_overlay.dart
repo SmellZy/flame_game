@@ -29,7 +29,7 @@ class GameOverOverlay extends StatelessWidget {
     void goHome() {
       game.overlays.remove('GameOverOverlay');
       game.paused = false;
-      Navigator.popUntil(context, ModalRoute.withName('/home'));
+      Navigator.of(context).pushReplacementNamed("/home");
     }
 
     void onMainButtonPressed() {

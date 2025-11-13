@@ -34,8 +34,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       emit(UserUpdating());
       await repository.updateUser(event.user);
-      final user = await repository.getUser();
-      emit(UserLoaded(user: user!));
+      emit(UserLoaded(user: event.user));
     } catch (error) {
       emit(UserError(message: error.toString()));
     }
@@ -48,8 +47,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       emit(UserCreating());
       await repository.createUser(event.user);
-      final user = await repository.getUser();
-      emit(UserLoaded(user: user!));
+      emit(UserLoaded(user: event.user));
     } catch (error) {
       emit(UserError(message: error.toString()));
     }

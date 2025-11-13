@@ -22,7 +22,7 @@ class GamePauseOverlay extends StatelessWidget {
     void goHome() {
       game.overlays.remove('GamePauseOverlay');
       game.paused = false;
-      Navigator.of(context).popAndPushNamed('/home');
+      Navigator.of(context).pushReplacementNamed("/home");
     }
 
     return Container(
