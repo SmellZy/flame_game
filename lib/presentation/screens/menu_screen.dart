@@ -16,7 +16,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 void goBack(dynamic context) {
-  Navigator.pop(context);
+  Navigator.popUntil(context, ModalRoute.withName('/home'));
 }
 
 class _MenuScreenState extends State<MenuScreen> {
@@ -69,12 +69,16 @@ class _MenuScreenState extends State<MenuScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            if (user == null) return; 
-                            final int newCoins = displayCoins + 1; 
-                            final User updatedUser = user.copyWith(coins: newCoins);
+                            if (user == null) return;
+                            final int newCoins = displayCoins + 1;
+                            final User updatedUser = user.copyWith(
+                              coins: newCoins,
+                            );
 
                             context.read<UserBloc>().add(
-                            UpdateUserEvent(user: updatedUser));},
+                              UpdateUserEvent(user: updatedUser),
+                            );
+                          },
                           child: Stack(
                             alignment: AlignmentGeometry.centerRight,
                             children: [
@@ -94,7 +98,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          user?.coins.toString() ?? displayCoins.toString(),
+                                          user?.coins.toString() ??
+                                              displayCoins.toString(),
                                           style: TextStyle(
                                             overflow: TextOverflow.clip,
                                             fontFamily: "RubikMonoOne",

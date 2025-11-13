@@ -1,3 +1,4 @@
+import 'package:flame/flame.dart';
 import 'package:flame_game/data/repositories/level_repository_impl.dart';
 import 'package:flame_game/data/repositories/user_repository_impl.dart';
 import 'package:flame_game/data/sources/level_local_datasource.dart';
@@ -6,12 +7,18 @@ import 'package:flame_game/domain/repositories/level_repository.dart';
 import 'package:flame_game/domain/repositories/user_repository.dart';
 import 'package:flame_game/presentation/bloc/level/level_bloc.dart';
 import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
+import 'package:flame_game/presentation/screens/home_screen.dart';
+import 'package:flame_game/presentation/screens/how_to_play_screen.dart';
 import 'package:flame_game/presentation/screens/loading_screen.dart';
+import 'package:flame_game/presentation/screens/menu_screen.dart';
+import 'package:flame_game/presentation/screens/play_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.device.fullScreen;
   runApp(
     ScreenUtilInit(
       designSize: Size(1080, 1920),
@@ -50,8 +57,15 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        initialRoute: "/",
+        routes: {
+          '/': (context) => const LoadingScreen(),
+          '/home': (context) => const HomeScreen(),
+          '/play': (context) => const PlayScreen(),
+          '/howtoplay': (context) => const HowToPlayScreen(),
+          '/menu': (context) => const MenuScreen(),
+        },
         debugShowCheckedModeBanner: false,
-        home: const LoadingScreen(),
       ),
     );
   }

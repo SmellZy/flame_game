@@ -14,7 +14,6 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
     on<GetLevelByIdEvent>(_onGetLevelById);
   }
 
-  // Handles fetching all levels
   Future<void> _onGetAllLevels(
     GetAllLevelsEvent event,
     Emitter<LevelState> emit,

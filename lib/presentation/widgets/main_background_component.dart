@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainBackgroundComponent extends StatefulWidget {
   const MainBackgroundComponent({super.key, this.child});
@@ -31,7 +30,7 @@ class _MainBackgroundComponentState extends State<MainBackgroundComponent>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
-    @override
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -48,14 +47,14 @@ class _MainBackgroundComponentState extends State<MainBackgroundComponent>
               image: AssetImage("assets/images/loading_bg.png"),
               fit: BoxFit.fill,
               colorFilter: ColorFilter.mode(
-              Color.fromRGBO(
-                255,
-                165,
-                0,
-                (0.1 * _glowAnimation.value).clamp(0.0, 1.0),
+                Color.fromRGBO(
+                  255,
+                  165,
+                  0,
+                  (0.1 * _glowAnimation.value).clamp(0.0, 1.0),
+                ),
+                BlendMode.lighten,
               ),
-              BlendMode.lighten,
-            ),
             ),
           ),
           child: widget.child,

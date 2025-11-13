@@ -55,7 +55,6 @@ class _AnimatedProgressBarState extends State<AnimatedProgressBar>
       ),
       child: Stack(
         children: [
-          // Градієнтна заливка
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             width: 907.w * progress,
@@ -69,7 +68,6 @@ class _AnimatedProgressBarState extends State<AnimatedProgressBar>
               borderRadius: BorderRadius.circular(25.r),
             ),
           ),
-          // Відсоток текстом
           Center(
             child: Text(
               "${(progress * 100).round()}%",

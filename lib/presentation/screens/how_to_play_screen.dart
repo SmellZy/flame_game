@@ -11,7 +11,7 @@ class HowToPlayScreen extends StatefulWidget {
 }
 
 void goBack(dynamic context) {
-  Navigator.pop(context);
+  Navigator.popUntil(context, ModalRoute.withName('/home'));
 }
 
 class _HowToPlayScreenState extends State<HowToPlayScreen> {
