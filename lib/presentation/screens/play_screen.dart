@@ -5,6 +5,7 @@ import 'package:flame_game/presentation/bloc/user/user_bloc.dart';
 import 'package:flame_game/presentation/widgets/level_tiles.dart';
 import 'package:flame_game/presentation/widgets/main_background_component.dart';
 import 'package:flame_game/presentation/widgets/game_widget.dart'; // Потрібно для навігації
+import 'package:flame_game/presentation/widgets/shom_modal_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -126,15 +127,7 @@ class _PlayScreenState extends State<PlayScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if (user == null) return;
-                              final int newCoins = displayCoins + 1;
-                              final User updatedUser = user.copyWith(
-                                coins: newCoins,
-                              );
-
-                              context.read<UserBloc>().add(
-                                UpdateUserEvent(user: updatedUser),
-                              );
+                              shomModalShop(context);
                             },
                             child: Stack(
                               alignment: Alignment.centerRight,

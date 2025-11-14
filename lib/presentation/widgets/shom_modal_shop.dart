@@ -24,7 +24,6 @@ Future shomModalShop(BuildContext context) {
       if (currentUser.currentEgg != egg.eggIcon) {
         final updatedUser = currentUser.copyWith(currentEgg: egg.eggIcon);
         userBloc.add(UpdateUserEvent(user: updatedUser));
-        showMessage("Яйце обрано!");
       }
     } else {
       if (currentUser.coins! >= egg.buyPrice) {
